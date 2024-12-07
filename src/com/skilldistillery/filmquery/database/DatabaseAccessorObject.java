@@ -2,6 +2,8 @@ package com.skilldistillery.filmquery.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,11 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
+			String sql = "SELECT * FROM film WHERE id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmId);
+			ResultSet rs = stmt.executeQuery();
+
 		} catch (SQLException sqle) {
 			System.err.println("Error getting film" + filmId);
 			sqle.printStackTrace();
@@ -30,7 +37,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	@Override
 	public Actor findActorById(int actorId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -39,7 +45,27 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		List<Actor> actorsByFilm = new ArrayList<>();
 		String sql = "SELECT actor.id, actor.first_name, actor.last_name " + "FROM actor "
 				+ "JOIN film_actor ON actor.id = film_actor.actor_id " + "WHERE film_actor.film_id = ?";
-		return null;
+
+		try {
+			Connection conn = DriverManager.getConnection(URL, user, pass);
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmId);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				
+				Actor actor = new Actor();
+				actorsByFilm.add(actor);
+			}
+			
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+		return actorsByFilm;
+
 	}
 
 }
