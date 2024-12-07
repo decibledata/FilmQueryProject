@@ -3,6 +3,7 @@ package com.skilldistillery.filmquery.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.skilldistillery.filmquery.entities.Actor;
@@ -17,11 +18,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	@Override
 	public Film findFilmById(int filmId) {
 		Film film = null;
-		
+
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
-		}
-		catch (SQLException sqle) {
+		} catch (SQLException sqle) {
 			System.err.println("Error getting film" + filmId);
 			sqle.printStackTrace();
 		}
@@ -36,7 +36,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	@Override
 	public List<Actor> findActorsByFilmId(int filmId) {
-		// TODO Auto-generated method stub
+		List<Actor> actorsByFilm = new ArrayList<>();
+		String sql = "SELECT actor.id, actor.first_name, actor.last_name " + "FROM actor "
+				+ "JOIN film_actor ON actor.id = film_actor.actor_id " + "WHERE film_actor.film_id = ?";
 		return null;
 	}
 

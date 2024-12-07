@@ -1,9 +1,9 @@
 package com.skilldistillery.filmquery.entities;
 
 public class Film {
+	private int id;
 	private String title;
 	private String description;
-	private int id;
 	private int releaseYear;
 	private int languageId;
 	private int rentalDuration;
@@ -86,6 +86,5 @@ public class Film {
 	public void setReplacementCost(double replacementCost) {
 		this.replacementCost = replacementCost;
 	}
-	
 	
 }

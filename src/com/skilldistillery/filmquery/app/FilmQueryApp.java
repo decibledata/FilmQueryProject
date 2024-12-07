@@ -14,6 +14,7 @@ public class FilmQueryApp {
     FilmQueryApp app = new FilmQueryApp();
     app.test();
 //    app.launch();
+    //
   }
 
   private void test() {
