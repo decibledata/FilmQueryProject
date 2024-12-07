@@ -1,5 +1,7 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.Objects;
+
 public class Film {
 	private int id;
 	private String title;
@@ -10,7 +12,9 @@ public class Film {
 	private double rentalRate;
 	private int length;
 	private double replacementCost;
-	
+	private String rating;
+	private String specialFeatures;
+
 	public Film() {
 		super();
 	}
@@ -86,5 +90,45 @@ public class Film {
 	public void setReplacementCost(double replacementCost) {
 		this.replacementCost = replacementCost;
 	}
+
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+
+	public String getSpecialFeatures() {
+		return specialFeatures;
+	}
+
+	public void setSpecialFeatures(String specialFeatures) {
+		this.specialFeatures = specialFeatures;
+	}
+
+	@Override
+	public String toString() {
+		return "Film ID = " + id + "| Title = " + title + "| Description = " + description + "| Release Year = "
+				+ releaseYear + "| Language ID = " + languageId + "| Rental Duration = " + rentalDuration
+				+ "| Rental Rate = " + rentalRate + "| Lenght = " + length + "| Replacement Cost = " + replacementCost
+				+ "| Rating = " + rating + "| Special Features = " + specialFeatures;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (this == obj)
+			return false;
+		Film other = (Film) obj;
+		return id == other.id;	
+	}
 	
+	@Override 
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 }
