@@ -1,5 +1,6 @@
 package com.skilldistillery.filmquery.app;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.skilldistillery.filmquery.database.DatabaseAccessor;
@@ -24,9 +25,12 @@ public class FilmQueryApp {
 
   private void launch() {
     Scanner input = new Scanner(System.in);
+    
+    try {
     System.out.println("Enter a Film ID: ");
     int filmId = input.nextInt();
     Film filmlaunch = db.findFilmById(filmId);
+    
     
     if (filmlaunch != null) {
     	System.out.println(filmlaunch);
@@ -34,7 +38,15 @@ public class FilmQueryApp {
     else {
     	System.out.println("Film not found. Invalid ID.");
     }
-    
-    input.close();
+    } catch (InputMismatchException sql) {
+    	System.out.println("Invalid Input. Please enter a Valid Film ID");
+    } catch (Exception sql) {
+    	System.out.println("Error: " + sql.getMessage());
+    	sql.printStackTrace();
+    }
+    finally  {
+    	input.close();    	
+    }
   }
 }
+    

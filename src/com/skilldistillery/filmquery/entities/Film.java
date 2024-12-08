@@ -1,5 +1,6 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Film {
@@ -14,7 +15,7 @@ public class Film {
 	private double replacementCost;
 	private String rating;
 	private String specialFeatures;
-	private String actors;
+	private List<Actor> actors;
 
 	//________________________________________________________________________________
 	
@@ -110,12 +111,12 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 
-	public String getActors() {
+	public List<Actor> getActors() {
 		return actors;
 	}
 
-	public void setActors(String actors) {
-		this.actors = actors;
+	public void setActors(List<Actor> list) {
+		this.actors = list;
 	}
 
 	@Override

@@ -16,6 +16,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid";
 	private String user = "student";
 	private String pass = "student";
+	
 	//________________________________________________________________________________
 	
 	@Override
@@ -31,10 +32,21 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			
 		if (rs.next()) {
 			film = new Film();
+			film.setId(rs.getInt("id"));
+			film.setTitle(rs.getString("title"));
+			film.setDescription(rs.getString("description"));
+			film.setReleaseYear(rs.getInt("release_year"));
+			film.setLanguageId(rs.getInt("language_id"));
+			film.setRentalDuration(rs.getInt("rental_duration"));
+			film.setRentalRate(rs.getDouble("rental_rate"));
+			film.setLength(rs.getInt("length"));
+			film.setReplacementCost(rs.getDouble("replacement_cost"));
+			film.setRating(rs.getString("rating"));
+			film.setSpecialFeatures(rs.getString("special_features"));
+			film.setActors(findActorsByFilmId(filmId));
 		}
 
 		} catch (SQLException sqle) {
-			System.err.println("Error getting film" + filmId);
 			sqle.printStackTrace();
 		}
 		return film;
@@ -56,6 +68,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			
 		if (rs.next()) {
 			actor = new Actor();
+			actor.setFirstName(rs.getString("first_name"));
+			actor.setLastName(rs.getString("last_name"));
 		}
 
 		} catch (SQLException sqle) {
@@ -80,6 +94,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 			while (rs.next()) {
 				Actor actor = new Actor();
+				actor.setId(rs.getInt("id"));
+				actor.setFirstName(rs.getString("first_name"));
+				actor.setLastName(rs.getString("last_name"));
 				actorsByFilm.add(actor);
 			}
 
