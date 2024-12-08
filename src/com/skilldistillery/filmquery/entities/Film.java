@@ -14,7 +14,10 @@ public class Film {
 	private double replacementCost;
 	private String rating;
 	private String specialFeatures;
+	private String actors;
 
+	//________________________________________________________________________________
+	
 	public Film() {
 		super();
 	}
@@ -107,28 +110,35 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 
+	public String getActors() {
+		return actors;
+	}
+
+	public void setActors(String actors) {
+		this.actors = actors;
+	}
+
 	@Override
 	public String toString() {
 		return "Film ID = " + id + "| Title = " + title + "| Description = " + description + "| Release Year = "
 				+ releaseYear + "| Language ID = " + languageId + "| Rental Duration = " + rentalDuration
-				+ "| Rental Rate = " + rentalRate + "| Lenght = " + length + "| Replacement Cost = " + replacementCost
-				+ "| Rating = " + rating + "| Special Features = " + specialFeatures;
+				+ "| Rental Rate = " + rentalRate + "| Length = " + length + "| Replacement Cost = " + replacementCost
+				+ "| Rating = " + rating + "| Special Features = " + specialFeatures + "| Actors = " + actors;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (this == obj)
+		if (obj == null || getClass() != obj.getClass())
 			return false;
 		Film other = (Film) obj;
-		return id == other.id;	
+		return id == other.id;
 	}
 	
 	@Override 
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+	
 }

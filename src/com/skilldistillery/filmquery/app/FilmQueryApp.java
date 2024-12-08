@@ -12,26 +12,29 @@ public class FilmQueryApp {
 
   public static void main(String[] args) {
     FilmQueryApp app = new FilmQueryApp();
-    app.test();
-//    app.launch();
+    //app.test();
+    app.launch();
     //
   }
 
-  private void test() {
-    Film film = db.findFilmById(1);
-    System.out.println(film);
-  }
+ // private void test() {
+ //   Film film = db.findFilmById(1);
+   // System.out.println(film);
+  //}
 
   private void launch() {
     Scanner input = new Scanner(System.in);
+    System.out.println("Enter a Film ID: ");
+    int filmId = input.nextInt();
+    Film filmlaunch = db.findFilmById(filmId);
     
-    startUserInterface(input);
+    if (filmlaunch != null) {
+    	System.out.println(filmlaunch);
+    }
+    else {
+    	System.out.println("Film not found. Invalid ID.");
+    }
     
     input.close();
   }
-
-  private void startUserInterface(Scanner input) {
-    
-  }
-
 }
