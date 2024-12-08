@@ -16,6 +16,7 @@ public class Film {
 	private String rating;
 	private String specialFeatures;
 	private List<Actor> actors;
+	private String languageName;
 
 	//________________________________________________________________________________
 	
@@ -119,12 +120,29 @@ public class Film {
 		this.actors = list;
 	}
 
+	public String getLanguageName() {
+		return languageName;
+	}
+	
+	public void setLanguageName(String languageName) {
+		this.languageName = languageName;
+		
+	}
 	@Override
 	public String toString() {
-		return "Film ID = " + id + "| Title = " + title + "| Description = " + description + "| Release Year = "
-				+ releaseYear + "| Language ID = " + languageId + "| Rental Duration = " + rentalDuration
-				+ "| Rental Rate = " + rentalRate + "| Length = " + length + "| Replacement Cost = " + replacementCost
-				+ "| Rating = " + rating + "| Special Features = " + specialFeatures + "| Actors = " + actors;
+		return "Film ID = " + id + 
+			   "| Title = " + title +
+			   "| Description = " + description +
+			   "| Release Year = "+ releaseYear +
+			   "| Language ID = " + languageId + 
+			   "| Rental Duration = " + rentalDuration + 
+			   "| Rental Rate = " + rentalRate +
+			   "| Length = " + length +
+			   "| Replacement Cost = " + replacementCost + 
+			   "| Rating = " + rating + 
+			   "| Special Features = " + specialFeatures + 
+			   "| Actors = " + actors + 
+			   "| Language = " + languageName;
 	}
 
 	@Override
@@ -141,5 +159,6 @@ public class Film {
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
 	
 }

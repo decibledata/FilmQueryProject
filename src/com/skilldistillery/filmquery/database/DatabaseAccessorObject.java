@@ -106,6 +106,48 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return actorsByFilm;
 
 	}
-
 	
+	//________________________________________________________________________________
+	
+	//Slack CodeBlock
+	//keyword = "%" + keyword + "%";
+	//String sql = " ... WHERE title LIKE ? OR description LIKE ?";
+
+	@Override
+	public List<Film> findFilmsByKeyword(String keyword) {
+		List<Film> filmsByKw = new ArrayList<>();
+		String sql = "SELECT film, language.name AS language_name " +
+					"FROM film JOIN language ON film.language_id = language.id " + 
+					"WHERE film.title LIKE ? OR film.description LIKE ?";
+		
+		try (Connection conn = DriverManager.getConnection(URL, user, pass);
+				PreparedStatement stmt = conn.prepareStatement(sql)) {
+				
+				stmt.setString(1, "%" + keyword + "%");
+				stmt.setString(2, "%" + keyword + "%");
+				ResultSet rs = stmt.executeQuery();
+				
+				while (rs.next()) {
+					Film films = new Film();
+					films.setId(rs.getInt("id"));
+					films.setTitle(rs.getString("title"));
+					films.setDescription(rs.getString("description"));
+					films.setReleaseYear(rs.getInt("release_year"));
+					films.setLanguageId(rs.getInt("language_id"));
+					films.setLanguageName(rs.getString("language_name"));
+					films.setRentalDuration(rs.getInt("rental_duration"));
+					films.setRentalRate(rs.getDouble("rental_rate"));
+					films.setLength(rs.getInt("length"));
+					films.setReplacementCost(rs.getDouble("replacement_cost"));
+					films.setRating(rs.getString("rating"));
+					films.setSpecialFeatures(rs.getString("special_features"));
+					films.setActors(findActorsByFilmId(rs.getInt("id")));
+					filmsByKw.add(films);
+				}
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+		return filmsByKw;
+	}	
 }
+
