@@ -145,6 +145,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					films.setActors(findActorsByFilmId(rs.getInt("id")));
 					
 					filmsByKw.add(films);
+					
 				}
 		} catch (SQLException e) {
 			e.printStackTrace();
