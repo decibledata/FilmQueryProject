@@ -42,6 +42,7 @@ public class FilmQueryApp {
 			case 1:
 				findFilmById(input);
 				break;
+				
 			case 2:
 				findFilmByKword(input);
 				break;
