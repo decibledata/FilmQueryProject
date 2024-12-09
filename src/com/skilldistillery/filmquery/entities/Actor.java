@@ -31,6 +31,9 @@ public class Actor {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+	//________________________________________________________________________________
+	
 	public String toString () {
 		return "Actor id =" + id + 
 			   "| firstName = " + firstName + 
