@@ -111,20 +111,21 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	
 	//Slack CodeBlock
 	//keyword = "%" + keyword + "%";
-	//String sql = " ... WHERE title LIKE ? OR description LIKE ?";
+	//String  = " ... WHERE title LIKE ? OR description LIKE ?";
 
 	@Override
 	public List<Film> findFilmsByKeyword(String keyword) {
-		List<Film> filmsByKw = new ArrayList<>();
+		   List<Film> filmsByKw = new ArrayList<>();
 		String sql = "SELECT film, language.name AS language_name " +
 					"FROM film JOIN language ON film.language_id = language.id " + 
 					"WHERE film.title LIKE ? OR film.description LIKE ?";
 		
 		try (Connection conn = DriverManager.getConnection(URL, user, pass);
-				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			 PreparedStatement stmt = conn.prepareStatement(sql)) {
 				
 				stmt.setString(1, "%" + keyword + "%");
 				stmt.setString(2, "%" + keyword + "%");
+				
 				ResultSet rs = stmt.executeQuery();
 				
 				while (rs.next()) {
@@ -142,10 +143,11 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					films.setRating(rs.getString("rating"));
 					films.setSpecialFeatures(rs.getString("special_features"));
 					films.setActors(findActorsByFilmId(rs.getInt("id")));
+					
 					filmsByKw.add(films);
 				}
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return filmsByKw;
 	}	
