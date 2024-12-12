@@ -19,19 +19,19 @@ The concepts of this project are creating a User-Friendly menu by providing the 
 
  * Film Detail Display:
 
-  #. Title, year, rating, and description.
+  # Title, year, rating, and description.
 
-  #. Language of the film (e.g; English, Japanese).
+  # Language of the film (e.g; English, Japanese).
 
 * Encapsulation.
 
- #. All database access is encapsulated in the 'DatabaseAccessorObject' class.
+ # All database access is encapsulated in the 'DatabaseAccessorObject' class.
 
-  #. User input/output functionallity in 'FilmQueryApp' class.
+  # User input/output functionallity in 'FilmQueryApp' class.
 
 * XML Configuration.
 
- #. Applying the correct dependencies neccessary to manage data provided via 'Maven'.
+ # Applying the correct dependencies neccessary to manage data provided via 'Maven'.
 
 
 These are just a few. as many of the applications functoinallity is provided by numerous classes as well as methods, and syntax logic. This project also includes the use of many 'Try-Catch' blocks, a few'If-else' statements, and 'for' loop, which allows the the code block to iterate through the entire series of films in the table of the SQL, that would otherwise be accessed by the 'MacOs' Terminal.
