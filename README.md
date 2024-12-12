@@ -37,5 +37,5 @@ The concepts of this project are creating a User-Friendly menu by providing the 
 These are just a few. as many of the applications functoinallity is provided by numerous classes as well as methods, and syntax logic. This project also includes the use of many 'Try-Catch' blocks, a few'If-else' statements, and 'for' loop, which allows the the code block to iterate through the entire series of films in the table of the SQL, that would otherwise be accessed by the 'MacOs' Terminal.
  
 
-## LESSONS
+# LESSONS
 Understanding the full functionallity of Apache Maven is rather difficult. Although, the transparency of the usabilty by practicing and gaining muscle memory through the simple commands seem simple, its actually complex. Even to a future Junior Java Dev who would be about 8 weeks into a 16 week program. There are a lot of moving componenets, as well as comparisons from XML files to HTML files. Specifcally with code block structure. Which soon came to be very familiar. Realising this, only made me want to understand it to my upomost capacity. Specifically, with coming to terms on consistently testing code and creating compilation errors. 
