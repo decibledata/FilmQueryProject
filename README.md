@@ -14,22 +14,22 @@ This project is an example of a Film Query. The Film Query App class, is a comma
 
 
 
-## CONCEPTS
+# CONCEPTS
 The concepts of this project are creating a User-Friendly menu by providing the ability to 
 
- # Film Detail Display:
+ ## Film Detail Display:
 
   * Title, year, rating, and description.
 
   * Language of the film (e.g; English, Japanese).
 
-# Encapsulation.
+## Encapsulation.
 
  * All database access is encapsulated in the 'DatabaseAccessorObject' class.
 
   * User input/output functionallity in 'FilmQueryApp' class.
 
-# XML Configuration.
+## XML Configuration.
 
  * Applying the correct dependencies neccessary to manage data provided via 'Maven'.
 
